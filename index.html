@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeliveYou4 – Намери работа. Намери човек.</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #222;
+            background: #ffffff;
+        }
+
+        header {
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            border-bottom: 1px solid #eeeeee;
+            background: white;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            color: #111;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+        }
+
+        .login {
+            border: 1px solid #222;
+            padding: 10px 18px;
+            border-radius: 8px;
+        }
+
+        .register {
+            background: #111;
+            color: white !important;
+            padding: 10px 18px;
+            border-radius: 8px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 90px 20px 65px;
+            background: linear-gradient(180deg, #f8f8ff 0%, #ffffff 100%);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            max-width: 850px;
+            margin: auto;
+            line-height: 1.12;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: 22px auto 35px;
+            color: #666;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 25px;
+            border-radius: 9px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .btn-dark {
+            background: #111;
+            color: white;
+        }
+
+        .btn-light {
+            background: white;
+            color: #111;
+            border: 1px solid #ddd;
+        }
+
+        .search-section {
+            max-width: 1050px;
+            margin: -25px auto 70px;
+            background: white;
+            padding: 28px;
+            border-radius: 15px;
+            box-shadow: 0 8px 35px rgba(0,0,0,0.08);
+        }
+
+        .search-section h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .search-box {
+            display: grid;
+            grid-template-columns: 2fr 1.3fr 1fr auto;
+            gap: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .search-button {
+            background: #111;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0 25px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        section {
+            padding: 65px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #777;
+        }
+
+        .candidates {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .candidate-card {
+            border: 1px solid #eeeeee;
+            border-radius: 14px;
+            padding: 25px;
+            background: white;
+        }
+
+        .avatar {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: #eeeeee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .candidate-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .candidate-card p {
+            color: #666;
+            margin: 7px 0;
+            font-size: 14px;
+        }
+
+        .active {
+            color: #16803c;
+            font-weight: bold;
+        }
+
+        .view-profile {
+            display: block;
+            margin-top: 18px;
+            text-align: center;
+            padding: 11px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #111;
+            font-weight: bold;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .category {
+            padding: 25px;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: bold;
+            background: #fff;
+        }
+
+        .cta {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #ccc;
+            margin-bottom: 28px;
+        }
+
+        .cta .btn-light {
+            background: white;
+            border: none;
+        }
+
+        footer {
+            background: #f6f6f6;
+            padding: 45px 7%;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        footer h3 {
+            margin-bottom: 12px;
+        }
+
+        footer a {
+            display: block;
+            color: #555;
+            text-decoration: none;
+            margin: 8px 0;
+        }
+
+        .copyright {
+            width: 100%;
+            padding-top: 25px;
+            border-top: 1px solid #ddd;
+            color: #777;
+            font-size: 13px;
+        }
+
+        @media (max-width: 800px) {
+            nav a:not(.login):not(.register) {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .search-box {
+                grid-template-columns: 1fr;
+            }
+
+            .search-button {
+                padding: 14px;
+            }
+
+            .candidates {
+                grid-template-columns: 1fr;
+            }
+
+            .categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">BeliveYou4</div>
+
+    <nav>
+        <a href="#">Начало</a>
+        <a href="#">Кандидати</a>
+        <a href="#">Как работи</a>
+        <a href="#">За работодатели</a>
+        <a href="#" class="login">Вход</a>
+        <a href="#" class="register">Регистрация</a>
+    </nav>
+</header>
+
+<div class="hero">
+
+    <h1>Търсиш работа? Покажи се.<br>
+        Търсиш служител? Намери го.</h1>
+
+    <p>
+        BeliveYou4 свързва работодатели с хора, които активно търсят работа.
+        Вместо да чакаш правилния кандидат, можеш да го потърсиш директно.
+    </p>
+
+    <div class="hero-buttons">
+        <a href="#" class="btn btn-dark">👤 Търся работа</a>
+        <a href="#" class="btn btn-light">🔎 Търся служител</a>
+    </div>
+
+</div>
+
+<div class="search-section">
+
+    <h2>🔎 Намери своя служител</h2>
+
+    <div class="search-box">
+
+        <input type="text" placeholder="Професия – напр. шофьор">
+
+        <input type="text" placeholder="Град">
+
+        <select>
+            <option>Опит</option>
+            <option>Без опит</option>
+            <option>1–2 години</option>
+            <option>3–5 години</option>
+            <option>5+ години</option>
+        </select>
+
+        <button class="search-button">ТЪРСИ</button>
+
+    </div>
+
+</div>
+
+<section>
+
+    <div class="section-title">
+        <h2>Нови кандидати</h2>
+        <p>Хора, които наскоро са заявили, че търсят работа.</p>
+    </div>
+
+    <div class="candidates">
+
+        <div class="candidate-card">
+            <div class="avatar">М</div>
+            <h3>Мария П.</h3>
+            <p>💼 Административен служител</p>
+            <p>📍 София</p>
+            <p>⭐ 4 години опит</p>
+            <p class="active">🟢 Може да започне веднага</p>
+            <a href="#" class="view-profile">Виж профила</a>
+        </div>
+
+        <div class="candidate-card">
+            <div class="avatar">И</div>
+            <h3>Иван Д.</h3>
+            <p>💼 Шофьор C+E</p>
+            <p>📍 Пловдив</p>
+            <p>⭐ 7 години опит</p>
+            <p class="active">🟢 Активно търси работа</p>
+            <a href="#" class="view-profile">Виж профила</a>
+        </div>
+
+        <div class="candidate-card">
+            <div class="avatar">Е</div>
+            <h3>Елена К.</h3>
+            <p>💼 Маникюрист</p>
+            <p>📍 Варна</p>
+            <p>⭐ 3 години опит</p>
+            <p class="active">🟢 Налична веднага</p>
+            <a href="#" class="view-profile">Виж профила</a>
+        </div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <div class="section-title">
+        <h2>Търси кандидати по категория</h2>
+        <p>Намери хора с опит в различни професионални сфери.</p>
+    </div>
+
+    <div class="categories">
+
+        <div class="category">💻 IT & Технологии</div>
+        <div class="category">🚛 Транспорт</div>
+        <div class="category">🏗️ Строителство</div>
+        <div class="category">🍽️ Хотели & Ресторанти</div>
+        <div class="category">🛍️ Продажби</div>
+        <div class="category">💄 Красота</div>
+        <div class="category">🏥 Здравеопазване</div>
+        <div class="category">📦 Логистика</div>
+
+    </div>
+
+</section>
+
+<div class="cta">
+
+    <h2>Търсиш работа? Нека работодателите те намерят.</h2>
+
+    <p>
+        Създай своя професионален профил и бъди видим за работодатели.
+    </p>
+
+    <a href="#" class="btn btn-light">СЪЗДАЙ CV БЕЗПЛАТНО</a>
+
+</div>
+
+<footer>
+
+    <div>
+        <h3>BeliveYou4</h3>
+        <p>Намираме хора. Свързваме възможности.</p>
+    </div>
+
+    <div>
+        <h3>Кандидати</h3>
+        <a href="#">Създай CV</a>
+        <a href="#">Как работи</a>
+    </div>
+
+    <div>
+        <h3>Работодатели</h3>
+        <a href="#">Търси кандидати</a>
+        <a href="#">Цени</a>
+    </div>
+
+    <div>
+        <h3>Помощ</h3>
+        <a href="#">Често задавани въпроси</a>
+        <a href="#">Контакти</a>
+        <a href="#">Поверителност</a>
+    </div>
+
+    <div class="copyright">
+        © 2026 BeliveYou4. Всички права запазени.
+    </div>
+
+</footer>
+
+</body>
+</html>
